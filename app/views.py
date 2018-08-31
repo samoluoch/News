@@ -1,14 +1,16 @@
 from flask import render_template
 from app import app
+from .request import get_news
 
 @app.route('/')
 def index():
     '''
     A function for the root page that will return the index page and its data
     '''
-
+    top_headlines = get_news('top-headlines')
+    print(top_headlines)
     title = 'Home- Welcome to News Highlights'
-    return render_template('index.html', title=title)
+    return render_template('index.html', title=title, top_headlines=top_headlines)
 
 @app.route('/news/<news_id>')
 def news(news_id):

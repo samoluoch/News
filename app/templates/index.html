@@ -4,14 +4,21 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
-    
-</head>
-<body>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
         <title> Home- Welcome to News Highlights </title>
-        {% endif %}
+        {% endif %}  
+</head>
+<body>
+    <!-- Popular movie section  -->
+    <h3> Business News</h3>
+    <ul>
+       {% for business_news in business %}
+           <li>{{ business_news.title}}</li>
+       {% endfor %}
+   </ul>
+    
 </body>
 </html>

@@ -5,13 +5,13 @@ from .models import news
 News = news.News
 
 api_key = app.config['NEWS_API_KEY']
-base_url = app.config['NEWS_API_BASE_URL']
+base_url = app.config["NEWS_API_BASE_URL"]
 
-def get_news(category):
+def get_news(top_headlines):
         '''
         Function that gets json response to url request
         '''
-        get_news_url = base_url.format(category, api_key)
+        get_news_url = base_url.format(api_key)
 
         with urllib.request.urlopen(get_news_url) as url:
             get_news_data = url.read()
@@ -19,9 +19,9 @@ def get_news(category):
 
             news_results = None
 
-            if get_news_response['results']:
-                news_results_list = get_news_response['results']
-                news_results = process_results(news_results_list)
+            if get_news_response['articles']:
+                news_results_list = get_news_response['articles']
+                news_results = process_news(news_results_list)
 
         return news_results
 
@@ -42,7 +42,7 @@ def process_news(news_list):
         descripion = news_item.get('description')
         url = news_item.get('url')
 
-        if poster:
+        if source:
             news_object = News(source,author,title,descripion,url)
 
             news_results.append(news_object)
