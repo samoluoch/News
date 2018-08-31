@@ -49,6 +49,26 @@ def process_news(news_list):
 
     return news_results
 
+def get_news_object(id):
+    '''
+    Function that gets news item by taking in the news id and returning the news object details
+    '''
+    with urllib.request.urlopen(get_news_details_url) as url:
+        news_details_data = url.read()
+        news_details_response = json.loads(news_details_data)
+
+        news_object = None
+        if news_details_response:
+            id = news_details_response.get('id')
+            name = news_details_response.get('name')
+            category = news_details_response.get('category')
+            description = news_details_response.get('description')
+            url = news_details_response.get('url')
+
+            news_object = News(id,name,category,description,url)
+
+    return movie_object
+
 
 
     
