@@ -1,6 +1,3 @@
-<!-- <h1>{{title}}</h1> -->
-
-
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +9,11 @@
         {% endif %}  
 </head>
 
+{% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 <body>
+
+    {% block content %}
     <h3>Tech News</h3>
     <ul>
         {{ macro.displayNewsList(technology)}}
@@ -22,4 +22,6 @@
     <ul>
         {{ macro.displayNewsList(top_headlines)}}
     </ul>
+
+    {% endblock %}
 </body>
