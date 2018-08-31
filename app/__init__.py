@@ -19,7 +19,7 @@ app.config.from_pyfile('config.py')
 
 
 '''
-Initializing flask extensions
+Initializing flask extensions by passing in the app instance
 '''
 Bootstrap = Bootstrap(app)
 
