@@ -7,11 +7,11 @@ News = news.News
 api_key = app.config['NEWS_API_KEY']
 base_url = app.config["NEWS_API_BASE_URL"]
 
-def get_news(top_headlines):
+def get_news(category):
         '''
         Function that gets json response to url request
         '''
-        get_news_url = base_url.format(api_key)
+        get_news_url = base_url.format(category, api_key)
 
         with urllib.request.urlopen(get_news_url) as url:
             get_news_data = url.read()
@@ -19,8 +19,8 @@ def get_news(top_headlines):
 
             news_results = None
 
-            if get_news_response['articles']:
-                news_results_list = get_news_response['articles']
+            if get_news_response['sources']:
+                news_results_list = get_news_response['sources']
                 news_results = process_news(news_results_list)
 
         return news_results 
@@ -36,15 +36,14 @@ def process_news(news_list):
     '''
     news_results = []
     for news_item in news_list:
+        id = news_item.get('id')
         name = news_item.get('name')
-        source = news_item.get('source')
-        author = news_item.get('author')
-        title = news_item.get('description')
-        descripion = news_item.get('description')
+        category = news_item.get('category')
+        description = news_item.get('description')
         url = news_item.get('url')
 
-        if source:
-            news_object = News(name,source,author,title,descripion,url)
+        if url:
+            news_object = News(id, name, description, url, category)
 
             news_results.append(news_object)
 

@@ -12,11 +12,14 @@
         {% endif %}  
 </head>
 <body>
-    <!-- Popular movie section  -->
-    <h3> Business News</h3>
+    <!-- Popular News  -->
+    <h3> News</h3>
     <ul>
-       {% for business_news in top_headlines %}
-           <li>{{ business_news.title}}</li>
+       {% for sports in top_headlines %}
+           <li>{{ sports.name}}</li>
+           <li>{{ sports.category}}</li>
+           <li>{{ sports.description}}</li>
+           <li>{{ sports.url}}</li>
        {% endfor %}
    </ul>
     
