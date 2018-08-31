@@ -23,7 +23,7 @@ def get_news(top_headlines):
                 news_results_list = get_news_response['articles']
                 news_results = process_news(news_results_list)
 
-        return news_results
+        return news_results 
 
 def process_news(news_list):
     '''
@@ -36,6 +36,7 @@ def process_news(news_list):
     '''
     news_results = []
     for news_item in news_list:
+        name = news_item.get('name')
         source = news_item.get('source')
         author = news_item.get('author')
         title = news_item.get('description')
@@ -43,7 +44,7 @@ def process_news(news_list):
         url = news_item.get('url')
 
         if source:
-            news_object = News(source,author,title,descripion,url)
+            news_object = News(name,source,author,title,descripion,url)
 
             news_results.append(news_object)
 
