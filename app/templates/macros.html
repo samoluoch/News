@@ -1,0 +1,8 @@
+{% macro displayNewsList(news_list) %}
+
+{% for sports in top_headlines %}
+    <li>{{ sports.name}}</li>
+    <li>{{ sports.category}}</li>
+
+{% endfor %}
+{% endmacro %}

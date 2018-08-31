@@ -8,19 +8,14 @@ def index():
     A function for the root page that will return the index page and its data
     '''
     top_headlines = get_news('sports')
-    name = get_news('name')
-    source = get_news('source')
-    author = get_news('author')
-    title = get_news('title')
-    url = get_news('url')
+    technology = get_news('technology')
+
     print(top_headlines)
-    print(name)
-    print(source)
-    print(author)
-    print(title)
-    print(url)
+    print(technology)
+     
+    
     title = 'Home- Welcome to News Highlights'
-    return render_template('index.html', name=name, title=title, author=author, source=source, top_headlines=top_headlines, url=url)
+    return render_template('index.html', title=title, top_headlines=top_headlines, technology=technology)
 
 @app.route('/news/<news_id>')
 def news(news_id):
