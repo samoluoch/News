@@ -27,9 +27,15 @@ def news(news_id):
     description = f'{news.description}'
     return render_template('news.html', id=id, name=name, news=news, description=description)
 
+@app.route('/search/<category>')
+def search(category):
+    '''
+    Views function that displays the news search results
+    '''
+    category_name_list = category.name.split(" ")
+    category_name_format = "+".join(category_name_list)
+    searched_categories = search_news(category_name_format)
 
+    title = f'search results for {category}'
 
-
-
-
-
+    return render_template('search.html',category = searched_categories)
