@@ -53,6 +53,8 @@ def get_news_object(id):
     '''
     Function that gets news item by taking in the news id and returning the news object details
     '''
+    get_news_details_url = base_url.format(id,api_key)
+
     with urllib.request.urlopen(get_news_details_url) as url:
         news_details_data = url.read()
         news_details_response = json.loads(news_details_data)
@@ -67,7 +69,7 @@ def get_news_object(id):
 
             news_object = News(id,name,category,description,url)
 
-    return movie_object
+    return news_object
 
 
 

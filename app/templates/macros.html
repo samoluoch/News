@@ -1,8 +1,23 @@
 {% macro displayNewsList(top_headlines) %}
 
-{% for sports in top_headlines %}
-    <li>{{ sports.name}}</li>
-    <li>{{ sports.category}}</li>
+{% for news in top_headlines %}
+    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card">
+    
+        <li class="text-center">
+
+            <h5><b> News Name </b></h5>
+               <i> {{ news.name }} </i>
+
+            <h5><b>News Details</b></h5>
+               <i> {{ news.description}} </i>
+            
+            <h5><b>News Category</b></h5>
+               <i> {{ news.category }}</i>
+
+            <h5><b>News URL</b></h5>
+                {{ news.url }}
+        </li>
+    </div>
 
 {% endfor %}
 {% endmacro %}
