@@ -12,13 +12,22 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 <body id="ind-style">
+    {% block content %}
 
+    <div class="container">
+        <form>
+            <input type="text" name="category_query" placeholder="Search News By Category" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+    
+    </div>
+    
     {% block styles %}
         {{ super() }}
         <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
     {% endblock %}
 
-    {% block content %}
+    
     <h3>Tech News</h3>
     <ul>
         {{ macro.displayNewsList(technology)}}
