@@ -1,8 +1,9 @@
 from flask import render_template,request,redirect,url_for
-from app import app
-from .request import get_news,get_news_object,search_news
+from . import main
+from ..request import get_news,get_news_object,search_news
+from ..models import News
 
-@app.route('/')
+@main.route('/')
 def index():
     '''
     A function for the root page that will return the index page and its data
@@ -24,7 +25,7 @@ def index():
 
         return render_template('index.html', title=title, top_headlines=top_headlines, technology=technology)
 
-@app.route('/news/<int:id>')
+@main.route('/news/<int:id>')
 def news(news_id):
     '''
     A function that returns the news details page and more information
@@ -34,7 +35,7 @@ def news(news_id):
     description = f'{news.description}'
     return render_template('news.html', id=id, name=name, news=news, description=description)
 
-@app.route('/search/<category>')
+@main.route('/search/<category>')
 def search(category):
     '''
     Views function that displays the news search results
