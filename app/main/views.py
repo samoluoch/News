@@ -20,7 +20,7 @@ def index():
     search_news = request.args.get('news_query')
 
     if search_news:
-        return redirect(url_for('search',category=search_news))
+        return redirect(url_for('main.search',category=search_news))
     else:
 
         return render_template('index.html', title=title, top_headlines=top_headlines, technology=technology)
